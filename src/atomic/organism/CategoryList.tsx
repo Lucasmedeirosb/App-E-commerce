@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, HStack, Image, Text } from 'native-base';
-import { GradientSquareButton } from '../atoms/GradientSquareButton';
+import { SquareButton } from '../atoms/SquareButton';
 
 import bike from '../../img/categories/subtract.png'
 import road from '../../img/categories/road.png'
@@ -13,33 +13,33 @@ export function CategoryList () {
         <HStack justifyContent="space-between" width="95px">
             
             <Box ml="20px">
-            <GradientSquareButton isGradient>
+            <SquareButton isGradient>
                 <Text color="white">All</Text>
-            </GradientSquareButton>
+            </SquareButton>
             </Box>
 
             <Box ml="20px" mt="-2">
-            <GradientSquareButton isGradient={false}>
+            <SquareButton isGradient={false}>
                 <Image source={bike} alt="icon of a bike" resizeMode='contain' />
-            </GradientSquareButton>
+            </SquareButton>
             </Box>
 
             <Box ml="20px" mt="-4">
-            <GradientSquareButton isGradient={false}>
+            <SquareButton isGradient={false}>
                 <Image source={road} alt="icon of a bike" resizeMode='contain' />
-            </GradientSquareButton>
+            </SquareButton>
             </Box>
 
             <Box ml="20px" mt="-6">
-            <GradientSquareButton isGradient={false}> 
+            <SquareButton isGradient={false}> 
                 <Image source={helmet} alt="icon of a bike" resizeMode='contain' />
-            </GradientSquareButton>
+            </SquareButton>
             </Box>
             
             <Box ml="20px" mt="-8"> 
-            <GradientSquareButton isGradient={false}>
+            <SquareButton isGradient={false}>
                 <Image source={mountain} alt="icon of a bike" resizeMode='contain' />
-            </GradientSquareButton>
+            </SquareButton>
             </Box>
         </HStack>
     </Box>

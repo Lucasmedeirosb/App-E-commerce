@@ -8,7 +8,7 @@ type Props = {
     isGradient?: boolean
 }
 
-export function GradientSquareButton({isGradient = true, children }: Props) {
+export function SquareButton({isGradient = true, children }: Props) {
 
     return <TouchableOpacity>
         <Center shadow="5" 
