@@ -81,7 +81,7 @@ export function Detail() {
     }
     return (
         <>
-            <Box pl="20px" pr="20">
+            <Box pl="20px" pr="20" mt="-20px">
                 <Header text={equipment.title}
                     inverterd={true}
                     type={toggleDescription ? "goBack" : "down"}
