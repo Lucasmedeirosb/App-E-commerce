@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Button, HStack, Image, Text } from 'native-base';
-import { SafeAreaView } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import api from '../../service/api';
 import { CardProps } from '../Home';
@@ -18,7 +17,7 @@ type RouteParams = {
 export function Detail() {
     const route = useRoute();
 
-    const {goBack} = useNavigation();
+    const {goBack, navigate} = useNavigation();
     const { equipmentId } = route.params as RouteParams
 
     const [equipment, setEquipments] = useState<CardProps>({} as CardProps);
@@ -78,7 +77,12 @@ export function Detail() {
         }
         handleAnimatedToggle();
 
-    }
+    };
+
+    function handleAddCart() {
+        navigate("Cart");
+    };
+
     return (
         <>
             <Box pl="20px" pr="20" mt="-20px">
@@ -181,7 +185,7 @@ export function Detail() {
                                 shadow={5}
                                 bg="ocean.200"
                                 _pressed={{ bgColor: "ocean.100" }}
-                                onPress={() => { }}
+                                onPress={handleAddCart}
                             >
                                 Add to Cart
                             </Button>

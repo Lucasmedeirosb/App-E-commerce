@@ -10,25 +10,24 @@ import { CategoryList } from '../../atomic/organism/CategoryList';
 import { useNavigation } from '@react-navigation/native';
 
 export type CardProps = {
-    title: string
-    price: number
-    model: string
-    image: string
-    id: string
+    title: string;
+    price: number;
+    model: string;
+    image: string;
+    id: string;
     handleRedirect?: (id: string) => void;
-}
+};
 
 export function Home() {
-    const {navigate} = useNavigation()
+    const { navigate } = useNavigation();
 
-    const [equipments, setEquipments] = useState<CardProps[]>([])
+    const [equipments, setEquipments] = useState<CardProps[]>([]);
 
     useEffect(() => {
         async function getEquipments() {
             try {
-                const { data } = await api.get('equipments')
-                setEquipments(data)
-
+                const { data } = await api.get('equipments');
+                setEquipments(data);
             } catch (err) {
                 console.log('Error: ', err);
             }
@@ -38,37 +37,40 @@ export function Home() {
     }, []);
 
     function handleRedirect(id: string) {
-        navigate("Detail", {
+        navigate('Detail', {
             equipmentId: id,
         });
     }
 
-    return <Box flex="1" padding="20px" pt="-10px" position="relative">
-        <Detailbackground />
+    return (
+        <Box flex="1" padding="20px" pt="-10px" position="relative">
+            <Detailbackground />
 
-        <FlatList
-            ListHeaderComponent={() => 
-            <>
-                <Header text='Choose Your bike'/>
-                <MainBanner />
-                <CategoryList />
-            </>
-            }
-            showsVerticalScrollIndicator={false}
-            numColumns={2}
-            keyExtractor={item => item.id}
-            data={equipments}
-            renderItem={({ item: equipment }) => ( 
-            <Card
-            onPress={() => {handleRedirect(equipment.id)}}
-            image={equipment.image}
-            id={equipment.id}
-            model={equipment.model}
-            price={equipment.price}
-            title={equipment.title} 
+            <FlatList
+                ListHeaderComponent={() => (
+                    <>
+                        <Header text="Choose Your bike" />
+                        <MainBanner />
+                        <CategoryList />
+                    </>
+                )}
+                showsVerticalScrollIndicator={false}
+                numColumns={2}
+                keyExtractor={(item) => item.id.toString()} // Use toString() to ensure it's a string
+                data={equipments}
+                renderItem={({ item: equipment }) => (
+                    <Card
+                        onPress={() => {
+                            handleRedirect(equipment.id);
+                        }}
+                        image={equipment.image}
+                        id={equipment.id}
+                        model={equipment.model}
+                        price={equipment.price}
+                        title={equipment.title}
+                    />
+                )}
             />
-            )}
-        />
-
-    </Box>
+        </Box>
+    );
 }
