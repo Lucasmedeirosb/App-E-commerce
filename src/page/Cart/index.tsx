@@ -6,15 +6,12 @@ import { CartItem } from "../../atomic/atoms/CartItem";
 import { SectionFooterCart } from "../../atomic/molecules/SectionFooterCart";
 import { SwipeableButton } from "../../atomic/molecules/SwipeableButton";
 import { useCart } from "../../context/use-cart";
-import { PaymentScreen } from "../Payment/PaymentScreen";
 
 export function Cart() {
     const { goBack, navigate } = useNavigation();
     const { items } = useCart()
 
-    function handleAddCart() {
-        navigate("PaymentScreen");
-    };
+
 
     return (
         <Box p="20px" flex="1" mb="-30px" justifyContent="space-between">
@@ -42,9 +39,9 @@ export function Cart() {
             </Box>
 
             <Box mb="50px">
-                <SectionFooterCart title="Subtotal" value="200" />
+                <SectionFooterCart title="Subtotal" value="9.119" />
                 <SectionFooterCart title="Delivery Fee" value="0" />
-                <SectionFooterCart title="Total" value="250" />
+                <SectionFooterCart title="Total" value="9.119" />
 
                 <Center mt="5">
                     <Box
@@ -55,7 +52,7 @@ export function Cart() {
                         borderRadius="8px"
                     >
                         <SwipeableButton
-                            handleSwipe={handleAddCart}
+                            handleSwipe={() => alert ("Pedido finalizado, aproxime seu cartão.")}
                             leftAction={
                                 <Box
                                     w="140px"

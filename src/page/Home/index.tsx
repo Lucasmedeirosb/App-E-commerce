@@ -37,9 +37,7 @@ export function Home() {
     }, []);
 
     function handleRedirect(id: string) {
-        navigate('Detail', {
-            equipmentId: id,
-        });
+        navigate('Detail', {equipmentId: id,});
     }
 
     return (
@@ -49,14 +47,14 @@ export function Home() {
             <FlatList
                 ListHeaderComponent={() => (
                     <>
-                        <Header text="Choose Your bike" />
+                        <Header text="E-bike - Live an Adventure " />
                         <MainBanner />
                         <CategoryList />
                     </>
                 )}
                 showsVerticalScrollIndicator={false}
                 numColumns={2}
-                keyExtractor={(item) => item.id.toString()} // Use toString() to ensure it's a string
+                keyExtractor={(item) => item.id.toString()}
                 data={equipments}
                 renderItem={({ item: equipment }) => (
                     <Card
